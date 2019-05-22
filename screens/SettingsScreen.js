@@ -8,8 +8,8 @@ export default class SettingsScreen extends React.Component {
 
   render() {
     <View>
-      <Text>Hi this is Kegan</Text>
-      <Text>2</Text>
+      <Text>1</Text>
+      <Text>Hello this is Jacob</Text>
       <Text>3</Text>
       <Text>4</Text>
     </View>
