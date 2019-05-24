@@ -11,12 +11,9 @@ export default class App extends Component {
     selectBackground = (timeOfDay) => {
         if (timeOfDay == 'morning') {
             this.setState({ 
-                backgroundToDisplay: '../assets/images/robot-dev.png',
+                backgroundToDisplay: '../assets/images/settings-Screen.png',
             })
-        } else if (timeOfDay == 'afternoon') {
-            this.setState({ 
-                backgroundToDisplay: 'https://spliffmobile.com/download/new-york-5896.jpg',
-            })
+        
         } else if (timeOfDay == 'evening') {
             this.setState({ 
                 backgroundToDisplay: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/new-york-city-empire-state-building-sunset-christopher-arndt.jpg',
@@ -29,7 +26,7 @@ export default class App extends Component {
             <View style={styles.container}>
                 <ImageBackground
                     style={styles.background}
-                    source={this.state.backgroundToDisplay}
+                    source={{uri: this.state.backgroundToDisplay}}
                 >
                 
                     <TouchableHighlight
@@ -42,15 +39,6 @@ export default class App extends Component {
                         </View>
                     </TouchableHighlight>
                     
-                    <TouchableHighlight
-                        onPress={() => this.selectBackground('afternoon')}
-                    >
-                        <View style={styles.buttonView}>
-                            <Text style={styles.buttonText}>
-                                Good afternoon!
-                            </Text>
-                        </View>
-                    </TouchableHighlight>
                     
                     <TouchableHighlight
                         onPress={() => this.selectBackground('evening')}
@@ -71,20 +59,26 @@ export default class App extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
+        textAlign: 'center',
     },
     background: {
         flex: 1,
     },
     buttonView: {
-        height: 30,
-        width: 100,
+        height: 80,
+        width: 200,
         backgroundColor: 'black',
         justifyContent: 'center',
-        marginBottom: 3,
+
     },
     buttonText: {
-        fontSize: 10, 
+        fontSize: 30, 
         color: 'white',
         textAlign: 'center',
+        justifyContent: 'center',
     },
+    ImageBackground:{
+
+    }
 });
