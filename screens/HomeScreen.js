@@ -1,16 +1,7 @@
-import React from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
 import { WebBrowser } from 'expo';
+import React from 'react';
+import { ImageBackground, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -19,33 +10,23 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <View style={styles.imageContainer}>
+        <ImageBackground source={{uri:'../assets/images/budget-Screen.png'}} style={{width: '100%', height: '100%'}}>
 
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
+              <View style={styles.getStartedContainer}>
+                {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.budgetText}>Your Budget</Text>
+              <Text style={styles.budgetText}>Your Budget</Text>
+              </View>
 
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.budgetText}>
-              Test
-            </Text>
-          </View>
-
-        </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
+          <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>Tap On The Tabs For Budget Details:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            
           </View>
-        </View>
+          
+        </ImageBackground>
       </View>
+      
+    
       
     );
   }
@@ -84,6 +65,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   
   },
+  imageContainer: {
+flex: 1,
+  },
+
   developmentModeText: {
     marginBottom: 20,
     color: 'rgba(0,0,0,0.4)',
@@ -109,7 +94,9 @@ const styles = StyleSheet.create({
   },
   getStartedContainer: {
     alignItems: 'center',
+    justifyContent: 'space-around',
     marginHorizontal: 50,
+    marginTop: 50,
   },
   homeScreenFilename: {
     marginVertical: 7,
@@ -123,12 +110,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   budgetText: {
-    flex: 1,
     fontSize: 36,
     color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
+    lineHeight: 36,
     textAlign: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   tabBarInfoContainer: {
     position: 'absolute',
