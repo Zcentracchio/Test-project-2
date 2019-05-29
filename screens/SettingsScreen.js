@@ -16,7 +16,7 @@ export default class App extends Component {
         
         } else if (timeOfDay == 'evening') {
             this.setState({ 
-                backgroundToDisplay: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/new-york-city-empire-state-building-sunset-christopher-arndt.jpg',
+                backgroundToDisplay: '../assets/images/settings-Screen.png',
             })
         }
     }
