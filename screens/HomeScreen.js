@@ -1,23 +1,50 @@
 import { WebBrowser } from 'expo';
-import React from 'react';
-import { ImageBackground, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, {Fragment} from 'react';
+import { ImageBackground, Platform, ScrollView, StyleSheet, Text, View, Alert } from 'react-native';
+import { Constants } from 'expo';
+import { PieChart } from 'react-native-svg-charts';
+import 'react-native-svg'; 
 
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+        balance: "",
+    }
+}
 
   render() {
+    const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ];
+    const randomColor = () => ('#' + ((Math.random() * 0xffffff) << 0).toString(16) + '000000').slice(0,7);
+    const pieData = data
+      .filter(value => value > 0)
+      .map((value, index) => (
+        {
+          value, 
+          svg: {
+            fill: randomColor(),
+            onPress: () => Alert.alert(`Pie slice ${index} clicked`),
+          },
+          key: `pie-${index}`
+      }
+      ));
     return (
       <View style={styles.imageContainer}>
-        <ImageBackground source={{uri:'../assets/images/budget-Screen.png'}} style={{width: '100%', height: '100%'}}>
+        <ImageBackground source={require('../assets/images/budget-Screen.png')} style={{width: '100%', height: '100%'}}>
 
               <View style={styles.getStartedContainer}>
                 {this._maybeRenderDevelopmentModeWarning()}
 
               <Text style={styles.budgetText}>Your Budget</Text>
               </View>
+              <Text style={style.balanceText}>{this.state.balance}</Text>
+             <View style={styles.pieChart}>
+              <Fragment>
+        <Text style={styles.paragraph}>{'Budget Diagram'}</Text>
+        <PieChart style={{ height: 200 }} data={pieData} />
+      </Fragment>
+      </View>
 
           <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>Tap On The Tabs For Budget Details:</Text>
@@ -25,7 +52,6 @@ export default class HomeScreen extends React.Component {
           
         </ImageBackground>
       </View>
-      
       
     
       
@@ -67,7 +93,11 @@ const styles = StyleSheet.create({
   
   },
   imageContainer: {
-flex: 1,
+justifyContent: 'space-around',
+  },
+  
+  pieChart: {
+marginTop: 150,
   },
 
   developmentModeText: {
@@ -117,6 +147,14 @@ flex: 1,
     textAlign: 'center',
     justifyContent: 'space-around',
   },
+  balanceText: {
+    fontSize: 36,
+    color: 'rgba(96,100,109, 1)',
+    lineHeight: 36,
+    textAlign: 'center',
+    justifyContent: 'space-around',
+  },
+
   tabBarInfoContainer: {
     position: 'absolute',
     bottom: 0,
@@ -155,5 +193,11 @@ flex: 1,
   helpLinkText: {
     fontSize: 14,
     color: '#2e78b7',
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
