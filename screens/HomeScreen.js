@@ -10,7 +10,7 @@ export default class HomeScreen extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-        balance: "",
+        balance: "$0.00",
     }
 }
 
@@ -38,10 +38,10 @@ export default class HomeScreen extends React.Component {
 
               <Text style={styles.budgetText}>Your Budget</Text>
               </View>
-              <Text style={style.balanceText}>{this.state.balance}</Text>
+              <Text style={styles.balanceText}>{this.state.balance}</Text>
              <View style={styles.pieChart}>
               <Fragment>
-        <Text style={styles.paragraph}>{'Budget Diagram'}</Text>
+        <Text style={styles.paragraph}>{'Budget Piechart'}</Text>
         <PieChart style={{ height: 200 }} data={pieData} />
       </Fragment>
       </View>
@@ -97,7 +97,7 @@ justifyContent: 'space-around',
   },
   
   pieChart: {
-marginTop: 150,
+marginTop: 35,
   },
 
   developmentModeText: {
@@ -142,17 +142,18 @@ marginTop: 150,
   },
   budgetText: {
     fontSize: 36,
-    color: 'rgba(96,100,109, 1)',
+    color: 'black',
     lineHeight: 36,
     textAlign: 'center',
     justifyContent: 'space-around',
   },
   balanceText: {
     fontSize: 36,
-    color: 'rgba(96,100,109, 1)',
+    color: 'black',
     lineHeight: 36,
     textAlign: 'center',
     justifyContent: 'space-around',
+    marginTop: 50,
   },
 
   tabBarInfoContainer: {
