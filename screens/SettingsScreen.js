@@ -1,9 +1,6 @@
 import React from 'react';
-import {TouchableOpacity, View, Text} from 'react-native'
-import {ContextProvider, Consumer, mapContextToProps} from '../components/AppContext';
-
-
-
+import {TextInput, View, Text} from 'react-native'
+import {mapContextToProps} from '../components/AppContext';
 
 
 class SettingsScreen extends React.Component {
@@ -14,9 +11,19 @@ class SettingsScreen extends React.Component {
     render() {
         return (
 
-
-                    <View style={styles[this.props.theme]}><Text>{this.props.theme}</Text></View>
-
+                    <View style={styles[this.props.theme]}>
+                        <View>
+                        <Text>Rendering a context variable</Text>
+                        <Text>{this.props.theme}</Text>
+                        </View>
+                        <View>
+                            <Text>Change a context variable</Text>
+                        <TextInput
+                            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                            onChangeText={theme => this.props.updateContext({theme})}
+                            value={this.props.theme}/>
+                        </View>
+                    </View>
 
         );
     }
