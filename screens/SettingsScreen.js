@@ -13,11 +13,11 @@ class SettingsScreen extends React.Component {
 
                     <View style={styles[this.props.theme]}>
                         <View>
-                        <Text>Rendering a context variable</Text>
+                        <Text style={styles[this.props.theme]}>Rendering a context variable</Text>
                         <Text>{this.props.theme}</Text>
                         </View>
                         <View>
-                            <Text>Change a context variable</Text>
+                            <Text style={styles[this.props.theme]}>Change a context variable</Text>
                         <TextInput
                             style={{height: 40, borderColor: 'gray', borderWidth: 1}}
                             onChangeText={theme => this.props.updateContext({theme})}

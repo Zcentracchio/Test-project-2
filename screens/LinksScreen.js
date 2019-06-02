@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import {mapContextToProps} from '../components/AppContext';
 
@@ -12,9 +12,9 @@ import {mapContextToProps} from '../components/AppContext';
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <Text>Hi</Text>
-      </ScrollView>
+      <View style={styles[this.props.theme]}>
+        <Text style={styles[this.props.theme] }>Hi</Text>
+        </View>
     );
   }
 }
