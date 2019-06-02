@@ -1,6 +1,12 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+import {mapContextToProps} from '../components/AppContext';
+
+class LinksScreen extends React.Component {
+  static navigationOptions = {
+      title: 'app.json',
+  };
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
@@ -17,6 +23,18 @@ export default class LinksScreen extends React.Component {
     );
   }
 }
+
+export default mapContextToProps(LinksScreen);
+const styles = {
+    dark: {
+        backgroundColor: 'black',
+        color: 'white',
+    },
+    light: {
+        backgroundColor: 'white',
+        color: 'black',
+    },
+};
 
 const styles = StyleSheet.create({
   container: {
