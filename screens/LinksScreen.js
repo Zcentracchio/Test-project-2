@@ -5,7 +5,7 @@ import {mapContextToProps} from '../components/AppContext';
 
 
 
-  export default class LinksScreen extends React.Component {
+  class LinksScreen extends React.Component {
     static navigationOptions = {
       title: 'Links',
     };
@@ -19,6 +19,7 @@ import {mapContextToProps} from '../components/AppContext';
   }
 }
 
+export default mapContextToProps(LinksScreen);
 
 
 
