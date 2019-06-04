@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#EEE',
   },
-  dark: {backgroundColor: 'black'},
-  light: {backgroundColor: 'white'}
+  dark: {backgroundColor: '#000'},
+  light: {backgroundColor: '#FFF'}
 });
