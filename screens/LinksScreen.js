@@ -27,11 +27,14 @@ export default class LinksScreen extends React.Component {
         <TextInput
                     value={this.state.inputValue}
                     onChangeText={this._handleTextChange}
-                    style={{ width: 250, height: 44, padding: 8, borderColor: 'black', borderWidth: 1, marginTop: 10, color: 'black', borderRadius: 10, marginBottom: 30}}
+                    style={{ width: 250, height: 44, padding: 8, borderColor: 'blue', borderWidth: 1, marginTop: 10, color: 'blue', borderRadius: 10, marginBottom: 30, backgroundColor:'white', fontSize: 28,}}
                 />
         <View style={styles.row}>
         <TouchableHighlight
                     style={styles.button}
+                 onPress={() => { 
+                    alert('You Should Get Your Bills Reciepts!') 
+                }}
                 >
                     <Text style={styles.buttonText}>
                         Bills
@@ -39,6 +42,9 @@ export default class LinksScreen extends React.Component {
                 </TouchableHighlight>
                 <TouchableHighlight
                     style={styles.button}
+                    onPress={() => { 
+                        alert('You Should Get Your Entertainment Reciepts!') 
+                    }}
                 >
                     <Text style={styles.buttonText}>
                     Entertainment
@@ -48,6 +54,9 @@ export default class LinksScreen extends React.Component {
           </View>
           <TouchableHighlight
                     style={styles.button}
+                    onPress={() => { 
+                        alert('You Should Get Your Food Reciepts!') 
+                    }}
                 >
                     <Text style={styles.buttonText}>
                     Food
@@ -64,7 +73,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
-    color: 'white',
   },
   imgBackground:{
     alignItems: 'center',
@@ -72,14 +80,15 @@ const styles = StyleSheet.create({
 },
 headerText:{
     fontSize:50,
-    color:'black'
+    color:'blue',
 },
 row: {
     flexDirection: 'row',
     marginTop: 15,
 },
 buttonText:{
-    fontSize: 24,
+    fontSize: 28,
+    color: 'blue',
 },
 button: {
     marginBottom: 50,
@@ -87,10 +96,11 @@ button: {
     justifyContent: 'center',
     height: 40,
     width: 200,
-    borderColor: 'black',
+    borderColor: 'blue',
     borderWidth: 1,
     marginHorizontal: 5,
-    color: 'black',
+    color: 'blue',
     borderRadius: 10,
+    backgroundColor:'white',
 },
 });
