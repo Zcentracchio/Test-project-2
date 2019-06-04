@@ -12,7 +12,7 @@ import {mapContextToProps} from '../components/AppContext';
 
   render() {
     return (
-      <View>
+        <View style={[styles.container, styles[this.props.theme]]}>
         <Text>{this.props.theme}</Text>
         </View>
     );
@@ -29,4 +29,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     backgroundColor: '#fff',
   },
+  dark: {backgroundColor: 'black'},
+  light: {backgroundColor: 'white'}
 });
