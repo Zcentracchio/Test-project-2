@@ -1,66 +1,60 @@
-import React from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
 import { WebBrowser } from 'expo';
+import React, {Fragment} from 'react';
+import { ImageBackground, Platform, ScrollView, StyleSheet, Text, View, Alert } from 'react-native';
+import { Constants } from 'expo';
+import { PieChart } from 'react-native-svg-charts';
+import 'react-native-svg'; 
 
-import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+        balance: "$0.00",
+    }
+}
 
   render() {
+    const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ];
+    const randomColor = () => ('#' + ((Math.random() * 0xffffff) << 0).toString(16) + '000000').slice(0,7);
+    const pieData = data
+      .filter(value => value > 0)
+      .map((value, index) => (
+        {
+          value, 
+          svg: {
+            fill: randomColor(),
+            onPress: () => Alert.alert(`Pie slice ${index} clicked`),
+          },
+          key: `pie-${index}`
+      }
+      ));
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
+      <View style={styles.imageContainer}>
+        <ImageBackground source={require('../assets/images/budget-Screen.png')} style={{width: '100%', height: '100%'}}>
 
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
+              <View style={styles.getStartedContainer}>
+                {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
+              <Text style={styles.budgetText}>Your Budget</Text>
+              </View>
+              <Text style={styles.balanceText}>{this.state.balance}</Text>
+             <View style={styles.pieChart}>
+              <Fragment>
+        <Text style={styles.paragraph}>{'Budget Piechart'}</Text>
+        <PieChart style={{ height: 200 }} data={pieData} />
+      </Fragment>
       </View>
+
+          <View style={styles.tabBarInfoContainer}>
+          <Text style={styles.tabBarInfoText}>Tap On The Tabs For Budget Details:</Text>
+          </View>
+          
+        </ImageBackground>
+      </View>
+      
+    
+      
     );
   }
 
@@ -72,12 +66,6 @@ export default class HomeScreen extends React.Component {
         </Text>
       );
 
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </Text>
-      );
     } else {
       return (
         <Text style={styles.developmentModeText}>
@@ -102,7 +90,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  
   },
+  imageContainer: {
+justifyContent: 'space-around',
+  },
+  
+  pieChart: {
+marginTop: 35,
+  },
+
   developmentModeText: {
     marginBottom: 20,
     color: 'rgba(0,0,0,0.4)',
@@ -112,6 +109,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 30,
+    alignItems: 'center',
   },
   welcomeContainer: {
     alignItems: 'center',
@@ -127,7 +125,9 @@ const styles = StyleSheet.create({
   },
   getStartedContainer: {
     alignItems: 'center',
+    justifyContent: 'space-around',
     marginHorizontal: 50,
+    marginTop: 50,
   },
   homeScreenFilename: {
     marginVertical: 7,
@@ -140,12 +140,22 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     paddingHorizontal: 4,
   },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
+  budgetText: {
+    fontSize: 36,
+    color: 'black',
+    lineHeight: 36,
     textAlign: 'center',
+    justifyContent: 'space-around',
   },
+  balanceText: {
+    fontSize: 36,
+    color: 'black',
+    lineHeight: 36,
+    textAlign: 'center',
+    justifyContent: 'space-around',
+    marginTop: 50,
+  },
+
   tabBarInfoContainer: {
     position: 'absolute',
     bottom: 0,
@@ -184,5 +194,11 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: '#2e78b7',
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
