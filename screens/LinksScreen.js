@@ -12,8 +12,8 @@ import {mapContextToProps} from '../components/AppContext';
 
   render() {
     return (
-      <View style={styles[this.props.theme]}>
-        <Text style={styles[this.props.theme] }>Hi</Text>
+      <View>
+        <Text>{this.props.theme}</Text>
         </View>
     );
   }
