@@ -2,8 +2,9 @@ import React from 'react';
 import { ScrollView, StyleSheet, View, Text, TextInput, ImageBackground, TouchableHighlight } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import { white } from 'ansi-colors';
+import {mapContextToProps} from '../components/AppContext';
 
-export default class LinksScreen extends React.Component {
+class LinksScreen extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -19,25 +20,22 @@ export default class LinksScreen extends React.Component {
   render() {
     return (
         <View style={styles.container}>
-        <ImageBackground
-         style={styles.imgBackground}
-                    source={require('../assets/images/receipts-Screen.png')}
-                >
-        <Text style={styles.headerText}>Receipts:</Text>
-        <TextInput
-                    value={this.state.inputValue}
-                    onChangeText={this._handleTextChange}
-                    style={{ width: 250, height: 44, padding: 8, borderColor: 'blue', borderWidth: 1, marginTop: 10, color: 'blue', borderRadius: 10, marginBottom: 30, backgroundColor:'white', fontSize: 28,}}
-                />
-        <View style={styles.row}>
-        <TouchableHighlight
-                    style={styles.button}
-                 onPress={() => { 
-                    alert('You Should Get Your Bills Reciepts!') 
-                }}
+            <View style={styles[this.props.theme]}>
+                <Text style={styles.headerText}>Receipts:</Text>
+                <TextInput
+                        value={this.state.inputValue}
+                        onChangeText={this._handleTextChange}
+                        style={{ width: 250, height: 44, padding: 8, borderColor: 'blue', borderWidth: 1, marginTop: 10, color: 'blue', borderRadius: 10, marginBottom: 30, backgroundColor:'white', fontSize: 28,}}
+                        />
+                <View style={styles.row}>
+                <TouchableHighlight
+                        style={styles.button}
+                        onPress={() => { 
+                            alert('You Should Get Your Bills Reciepts!') 
+                        }}
                 >
                     <Text style={styles.buttonText}>
-                        Bills
+                            Bills
                     </Text>
                 </TouchableHighlight>
                 <TouchableHighlight
@@ -47,26 +45,28 @@ export default class LinksScreen extends React.Component {
                     }}
                 >
                     <Text style={styles.buttonText}>
-                    Entertainment
+                        Entertainment
                     </Text>
                 </TouchableHighlight>
-          
-          </View>
-          <TouchableHighlight
+        
+                </View>
+                <TouchableHighlight
                     style={styles.button}
                     onPress={() => { 
-                        alert('You Should Get Your Food Reciepts!') 
-                    }}
+                    alert('You Should Get Your Food Reciepts!') 
+                     }}
                 >
                     <Text style={styles.buttonText}>
-                    Food
+                        Food
                     </Text>
-                </TouchableHighlight>
-          </ImageBackground>
+                        </TouchableHighlight>
+                </View>
         </View>
     );
   }
 }
+
+export default mapContextToProps(LinksScreen);
 
 const styles = StyleSheet.create({
   container: {
@@ -74,10 +74,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     backgroundColor: '#fff',
   },
-  imgBackground:{
-    alignItems: 'center',
-    flex: 1,
-},
 headerText:{
     fontSize:50,
     color:'blue',
@@ -99,8 +95,15 @@ button: {
     borderColor: 'blue',
     borderWidth: 1,
     marginHorizontal: 5,
-    color: 'blue',
     borderRadius: 10,
     backgroundColor:'white',
+},
+pink: {
+    backgroundColor: 'pink',
+    color: 'white',
+},
+white: {
+    backgroundColor: 'white',
+    color: 'black',
 },
 });
