@@ -25,42 +25,41 @@ class LinksScreen extends React.Component {
                 <TextInput
                         value={this.state.inputValue}
                         onChangeText={this._handleTextChange}
-                        style={{ width: 250, height: 44, padding: 8, borderColor: 'blue', borderWidth: 1, marginTop: 10, color: 'blue', borderRadius: 10, marginBottom: 30, backgroundColor:'white', fontSize: 28,}}
-                        />
+                        style={styles.textInput}
+                />
                 <View style={styles.row}>
-                <TouchableHighlight
+                    <TouchableHighlight
                         style={styles.button}
                         onPress={() => { 
                             alert('You Should Get Your Bills Reciepts!') 
                         }}
-                >
-                    <Text style={styles.buttonText}>
+                    >
+                        <Text style={styles.buttonText}>
                             Bills
-                    </Text>
-                </TouchableHighlight>
+                        </Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        style={styles.button}
+                        onPress={() => { 
+                            alert('You Should Get Your Food Reciepts!') 
+                        }}
+                    >
+                        <Text style={styles.buttonText}>
+                            Food
+                        </Text>
+                    </TouchableHighlight>        
+                </View>
                 <TouchableHighlight
                     style={styles.button}
                     onPress={() => { 
-                        alert('You Should Get Your Entertainment Reciepts!') 
-                    }}
+                    alert('You Should Get Your Entertainment Reciepts!') 
+                     }}
                 >
                     <Text style={styles.buttonText}>
                         Entertainment
                     </Text>
                 </TouchableHighlight>
-        
-                </View>
-                <TouchableHighlight
-                    style={styles.button}
-                    onPress={() => { 
-                    alert('You Should Get Your Food Reciepts!') 
-                     }}
-                >
-                    <Text style={styles.buttonText}>
-                        Food
-                    </Text>
-                        </TouchableHighlight>
-                </View>
+            </View>
         </View>
     );
   }
@@ -73,7 +72,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
-  },
+    alignItems: 'center',
+   },
 headerText:{
     fontSize:50,
     color:'blue',
@@ -83,27 +83,45 @@ row: {
     marginTop: 15,
 },
 buttonText:{
-    fontSize: 28,
+    fontSize: 20,
     color: 'blue',
+    textAlign: 'center',
 },
 button: {
     marginBottom: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
     height: 40,
-    width: 200,
+    width: 150,
     borderColor: 'blue',
     borderWidth: 1,
-    marginHorizontal: 5,
+    marginHorizontal: 15,
     borderRadius: 10,
     backgroundColor:'white',
+    justifyContent: 'center',
+},
+textInput: {
+    width: 250,
+    height: 44,
+    padding: 8,
+    borderColor: 'blue',
+    borderWidth: 1,
+    marginTop: 10,
+    color: 'blue',
+    borderRadius: 10,
+    marginBottom: 30,
+    backgroundColor:'white', 
+    fontSize: 20,
+    textAlign: 'center'
 },
 pink: {
+    flex: 1,
     backgroundColor: 'pink',
     color: 'white',
+    alignItems: 'center',
 },
 white: {
+    flex: 1,
     backgroundColor: 'white',
     color: 'black',
+    alignItems: 'center',
 },
 });

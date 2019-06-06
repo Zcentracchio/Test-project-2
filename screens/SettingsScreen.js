@@ -14,7 +14,7 @@ class SettingsScreen extends React.Component {
     render() {
         return (
             <View style={styles[this.props.theme]}>
-                <View>
+                <View style={styles.picker}>
                     <Text style = {styles.headerText}>Pick a background color</Text>
                     <Picker
                         selectedValue={this.props.theme}
@@ -25,7 +25,7 @@ class SettingsScreen extends React.Component {
                     </Picker>
                         
 
-                    <View>
+                    <View style={styles.terms}>
                         
                         <Text>Terms of Service</Text>
                         <Text>This budgeting app is made for personal use only.</Text>
@@ -55,11 +55,22 @@ const styles = StyleSheet.create({
         fontSize: 24,
     },    
     pink: {
+        flex: 1,
         backgroundColor: 'pink',
         color: 'white',
     },
     white: {
+        flex: 1,
         backgroundColor: 'white',
         color: 'black',
     },
+    picker: {
+        flex:1,
+
+    },
+    terms: {
+        marginTop: 50,
+        flex:1,
+    },
+
 });

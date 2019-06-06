@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, TouchableOpacity} from "react-native";
 import {EventEmitter} from 'events';
 
-const initialState = {currentPhoto: null, theme:'light'};
+const initialState = {currentPhoto: null, theme:'white'};
 
 
 class MyEmitter extends EventEmitter {
