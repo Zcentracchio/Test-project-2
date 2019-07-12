@@ -4,18 +4,19 @@ import { ImageBackground, Platform, ScrollView, StyleSheet, Text, View, Alert } 
 import { Constants } from 'expo';
 import { PieChart } from 'react-native-svg-charts';
 import 'react-native-svg'; 
+import {mapContextToProps} from '../components/AppContext';
 
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-        balance: "$0.00",
+        
     }
 }
 
   render() {
-    const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ];
+    const data = [Number(this.props.bills), Number(this.props.food), Number(this.props.entertainment)];
     const randomColor = () => ('#' + ((Math.random() * 0xffffff) << 0).toString(16) + '000000').slice(0,7);
     const pieData = data
       .filter(value => value > 0)
@@ -24,82 +25,47 @@ export default class HomeScreen extends React.Component {
           value, 
           svg: {
             fill: randomColor(),
-            onPress: () => Alert.alert(`Pie slice ${index} clicked`),
+            onPress: () => {if(index==0)
+                              {Alert.alert('Total Bills = $'+(Number(this.props.bills)).toFixed(2))}
+                            else if (index==1)
+                              {Alert.alert('Total Food = $'+(Number(this.props.food)).toFixed(2))}
+                              else {Alert.alert('Total Entertainment = $'+(Number(this.props.entertainment)).toFixed(2))}
+              },
           },
           key: `pie-${index}`
       }
       ));
     return (
-      <View style={styles.imageContainer}>
-        <ImageBackground source={require('../assets/images/budget-Screen.png')} style={{width: '100%', height: '100%'}}>
-
-              <View style={styles.getStartedContainer}>
-                {this._maybeRenderDevelopmentModeWarning()}
-
-              <Text style={styles.budgetText}>Your Budget</Text>
-              </View>
-              <Text style={styles.balanceText}>{this.state.balance}</Text>
-             <View style={styles.pieChart}>
-              <Fragment>
-        <Text style={styles.paragraph}>{'Budget Piechart'}</Text>
-        <PieChart style={{ height: 200 }} data={pieData} />
-      </Fragment>
-      </View>
-
-          <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>Tap On The Tabs For Budget Details:</Text>
-          </View>
+      <View style={styles.container}>
+        <View style={styles[this.props.theme]}>              
+            <Text style={styles.budgetText}>Total Expenditures</Text>
           
-        </ImageBackground>
-      </View>
-      
-    
-      
+            <Text style={styles.balanceText}>{'$'+(Number(this.props.bills)+Number(this.props.food)+Number(this.props.entertainment)).toFixed(2)}</Text>
+            <View style={styles.pieChart}>
+              <Fragment>
+                <Text style={styles.paragraph}>{'Touch slice to see category and amount'}</Text>
+                <PieChart style={{ height: 200 }} data={pieData} />
+              </Fragment>
+            </View>
+          </View>
+      </View>      
     );
   }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
+
+export default mapContextToProps(HomeScreen);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  
+    backgroundColor: '#fff',  
   },
   imageContainer: {
-justifyContent: 'space-around',
-  },
-  
+    justifyContent: 'space-around',
+  },  
   pieChart: {
-marginTop: 35,
+    marginTop: 35,
   },
-
   developmentModeText: {
     marginBottom: 20,
     color: 'rgba(0,0,0,0.4)',
@@ -144,6 +110,7 @@ marginTop: 35,
     fontSize: 36,
     color: 'black',
     lineHeight: 36,
+    marginTop: 10,
     textAlign: 'center',
     justifyContent: 'space-around',
   },
@@ -201,4 +168,16 @@ marginTop: 35,
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  lightblue: {
+    flex: 1,
+    backgroundColor: 'lightblue',
+    color: 'white',
+    alignItems: 'center',
+},
+white: {
+    flex: 1,
+    backgroundColor: 'white',
+    color: 'black',
+    alignItems: 'center',
+},
 });

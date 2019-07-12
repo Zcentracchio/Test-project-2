@@ -21,22 +21,9 @@ class SettingsScreen extends React.Component {
                         style={{height: 50, width: 200}}
                         onValueChange={theme => this.props.updateContext({theme})}>
                         <Picker.Item label="White" value='white'/>
-                        <Picker.Item label="Pink" value='pink'/>
-                    </Picker>
-                        
-
-                    <View style={styles.terms}>
-                        
-                        <Text>Terms of Service</Text>
-                        <Text>This budgeting app is made for personal use only.</Text>
-                        <Text>We do not condone Alabama's abortion laws.</Text>
-                        <Text>Any sexual assault aligations will be treated</Text>
-                        <Text>like a kid dropped their ice cream. </Text>
-                        <Text>You may expieriance a rondom amount of money appear </Text>
-                        <Text>in your account. This is Just to make you feel good.</Text>
-                        <Text>you're accually broke.</Text>
-                    </View>
-                    </View>
+                        <Picker.Item label="Light Blue" value='lightblue'/>
+                    </Picker>                 
+                </View>
             </View>
         );
     }
@@ -54,9 +41,9 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: 24,
     },    
-    pink: {
+    lightblue: {
         flex: 1,
-        backgroundColor: 'pink',
+        backgroundColor: 'lightblue',
         color: 'white',
     },
     white: {
