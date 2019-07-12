@@ -38,12 +38,12 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles[this.props.theme]}>              
-            <Text style={styles.budgetText}>Total Expenditures</Text>
+              <Text style={styles.budgetText}>Total Expenditures Pie Chart</Text>       
           
             <Text style={styles.balanceText}>{'$'+(Number(this.props.bills)+Number(this.props.food)+Number(this.props.entertainment)).toFixed(2)}</Text>
             <View style={styles.pieChart}>
-              <Fragment>
-                <Text style={styles.paragraph}>{'Touch slice to see category and amount'}</Text>
+              <Fragment> 
+              <Text style={styles.paragraph}>{'Touch slice to see category and amount'}</Text>
                 <PieChart style={{ height: 200 }} data={pieData} />
               </Fragment>
             </View>
@@ -107,10 +107,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   budgetText: {
-    fontSize: 36,
+    fontSize: 38,
     color: 'black',
     lineHeight: 36,
-    marginTop: 10,
+    marginTop: 20,
     textAlign: 'center',
     justifyContent: 'space-around',
   },
@@ -180,4 +180,7 @@ white: {
     color: 'black',
     alignItems: 'center',
 },
+header: {
+  height: 100,
+}
 });
