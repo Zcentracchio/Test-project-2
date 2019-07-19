@@ -2,8 +2,9 @@ import React from 'react';
 import { ScrollView, StyleSheet, View, Text, TextInput, ImageBackground, TouchableHighlight } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import { white } from 'ansi-colors';
+import {mapContextToProps} from '../components/AppContext';
 
-export default class LinksScreen extends React.Component {
+class LinksScreen extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -32,8 +33,8 @@ export default class LinksScreen extends React.Component {
         <View style={styles.row}>
         <TouchableHighlight
                     style={styles.button}
-                 onPress={() => { 
-                    alert('You Should Get Your Bills Reciepts!') 
+                 onPress={() => {
+                    alert('You Should Get Your Bills Reciepts!')
                 }}
                 >
                     <Text style={styles.buttonText}>
@@ -42,20 +43,20 @@ export default class LinksScreen extends React.Component {
                 </TouchableHighlight>
                 <TouchableHighlight
                     style={styles.button}
-                    onPress={() => { 
-                        alert('You Should Get Your Entertainment Reciepts!') 
+                    onPress={() => {
+                        alert('You Should Get Your Entertainment Reciepts!')
                     }}
                 >
                     <Text style={styles.buttonText}>
                     Entertainment
                     </Text>
                 </TouchableHighlight>
-          
+
           </View>
           <TouchableHighlight
                     style={styles.button}
-                    onPress={() => { 
-                        alert('You Should Get Your Food Reciepts!') 
+                    onPress={() => {
+                        alert('You Should Get Your Food Reciepts!')
                     }}
                 >
                     <Text style={styles.buttonText}>
@@ -104,3 +105,6 @@ button: {
     backgroundColor:'white',
 },
 });
+
+export default mapContextToProps(LinksScreen);
+

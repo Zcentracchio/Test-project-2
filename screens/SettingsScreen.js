@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View, StyleSheet, Image, TouchableHighlight, ImageBackground, Button} from 'react-native';
 import { Constants } from 'expo';
+import {mapContextToProps} from '../components/AppContext';
 
-export default class App extends Component {
-    
-    
+class App extends Component {
 
-    
+
+
+
     render() {
         return (
             <View style={styles.container}>
             <ImageBackground source={require('../assets/images/settings-Screen.png')} style={{width: '100%', height: '100%',}}>
             <TouchableHighlight
                     style={styles.button}
-                    onPress={() => { 
-                        alert('This should change the back ground but we never figured out how to do that.') 
+                    onPress={() => {
+                        alert('This should change the back ground but we never figured out how to do that.')
                     }}
                 >
                     <Text style={styles.buttonText}>
@@ -22,7 +23,7 @@ export default class App extends Component {
                     </Text>
                 </TouchableHighlight>
             <View style={styles.textContainer}>
-                
+
                 <Text>Terms of Service</Text>
                 <Text>This budgeting app is made for personal use only.</Text>
                 <Text>We do not condone Alabama's abortion laws.</Text>
@@ -56,12 +57,12 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     buttonText: {
-        fontSize: 28, 
+        fontSize: 28,
         color: 'black',
         textAlign: 'center',
         justifyContent: 'center',
     },
-    Text:{ 
+    Text:{
         fontSize: 2,
 
     },
@@ -85,3 +86,5 @@ marginTop: 130,
     borderRadius: 10,
 },
 });
+
+export default mapContextToProps(SettingsScreen);

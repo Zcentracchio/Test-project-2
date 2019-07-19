@@ -3,10 +3,10 @@ import React, {Fragment} from 'react';
 import { ImageBackground, Platform, ScrollView, StyleSheet, Text, View, Alert } from 'react-native';
 import { Constants } from 'expo';
 import { PieChart } from 'react-native-svg-charts';
-import 'react-native-svg'; 
+import 'react-native-svg';
+import {mapContextToProps} from '../components/AppContext';
 
-
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -21,7 +21,7 @@ export default class HomeScreen extends React.Component {
       .filter(value => value > 0)
       .map((value, index) => (
         {
-          value, 
+          value,
           svg: {
             fill: randomColor(),
             onPress: () => Alert.alert(`Pie slice ${index} clicked`),
@@ -49,12 +49,12 @@ export default class HomeScreen extends React.Component {
           <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>Tap On The Tabs For Budget Details:</Text>
           </View>
-          
+
         </ImageBackground>
       </View>
-      
-    
-      
+
+
+
     );
   }
 
@@ -90,12 +90,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  
+
   },
   imageContainer: {
 justifyContent: 'space-around',
   },
-  
+
   pieChart: {
 marginTop: 35,
   },
@@ -202,3 +202,6 @@ marginTop: 35,
     textAlign: 'center',
   },
 });
+
+
+export default mapContextToProps(HomeScreen);
