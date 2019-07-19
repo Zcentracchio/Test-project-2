@@ -3,10 +3,7 @@ import { AppRegistry, Text, View, StyleSheet, Image, TouchableHighlight, ImageBa
 import { Constants } from 'expo';
 import {mapContextToProps} from '../components/AppContext';
 
-class App extends Component {
-
-
-
+class SettingsScreen extends Component {
 
     render() {
         return (
