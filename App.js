@@ -21,10 +21,10 @@ export default class App extends React.Component {
     } else {
       return (
         <ContextProvider>
-          <View style={styles.container}>
+
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <AppNavigator />
-          </View>
+
         </ContextProvider>
       );
     }
@@ -56,10 +56,3 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

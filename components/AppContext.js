@@ -23,7 +23,6 @@ export const {Consumer} = AppContext;
 export const mapContextToProps = WrappedComponent => (
     class AppContext extends Component {
         render() {
-
             const updateContext = updates => myEmitter.emit('UPDATE', updates);
             return (
                 <Consumer>
