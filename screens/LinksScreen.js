@@ -60,7 +60,7 @@ class LinksScreen extends React.Component {
                     keyboardShouldPersistTaps={'handled'}>
 
                     <View>
-                        <Text style={styles.buttonText}>Type Bill Amount, then press Enter</Text>
+                        <Text style={styles.buttonText}>Type Bill Amount, then Add Receipt</Text>
                         <View style={styles.row}>
                             <TextInput
                                 style={styles.textInput}
@@ -73,15 +73,15 @@ class LinksScreen extends React.Component {
                                 style={styles.button}
                                 onPress={this.addReceipt('bills', this.state.bills)}
                             >
-                                <Text style={styles.buttonText}>
-                                    Add receipt
+                                <Text style={styles.receiptText}>
+                                    Add Receipt
                                 </Text>
                             </TouchableHighlight>
 
                         </View>
                     </View>
                     <View>
-                        <Text style={styles.buttonText}>Type Food Amount, then press Enter</Text>
+                        <Text style={styles.buttonText}>Type Food Amount, then Add Receipt</Text>
 
                         <View style={styles.row}>
                             <TextInput
@@ -95,15 +95,15 @@ class LinksScreen extends React.Component {
                                 style={styles.button}
                                 onPress={this.addReceipt('food', this.state.food)}
                             >
-                                <Text style={styles.buttonText}>
-                                    Add receipt
+                                <Text style={styles.receiptText}>
+                                    Add Receipt
                                 </Text>
                             </TouchableHighlight>
 
                         </View>
                     </View>
                     <View>
-                        <Text style={styles.buttonText}>Type Entertainment Amount, then press Enter</Text>
+                        <Text style={styles.buttonText}>Type Entertainment Amount, then Add Receipt</Text>
 
                         <View style={styles.row}>
                             <TextInput
@@ -117,8 +117,8 @@ class LinksScreen extends React.Component {
                                 style={styles.button}
                                 onPress={this.addReceipt('entertainment', this.state.entertainment)}
                             >
-                                <Text style={styles.buttonText}>
-                                    Add receipt
+                                <Text style={styles.receiptText}>
+                                    Add Receipt
                                 </Text>
                             </TouchableHighlight>
 
@@ -155,6 +155,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     buttonText: {
+        fontSize: 15,
+        color: 'black',
+        textAlign: 'center',
+    },
+    receiptText: {
         fontSize: 15,
         color: 'blue',
         textAlign: 'center',

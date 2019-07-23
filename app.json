@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "test budgeting",
-    "slug": "test",
+    "name": "Budget Tracker",
+    "slug": "budgettracker",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -10,7 +10,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icons8-ledger-64.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -22,6 +22,12 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "edu.essexstem.budget",
+      "versionCode": 1,
+      "permissions": [],
+      "config": {},
+    },
     "ios": {
       "supportsTablet": true
     }
