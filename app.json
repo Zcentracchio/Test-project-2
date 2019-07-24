@@ -10,7 +10,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icons8-ledger-64.png",
+    "icon": "./assets/images/green-up-icon-1024-NO-ALPHA.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -26,10 +26,11 @@
       "package": "edu.essexstem.budget",
       "versionCode": 1,
       "permissions": [],
-      "config": {},
+      "config": {}
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.Essex-High-School.budgettracker"
     }
   }
 }
